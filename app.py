@@ -18,12 +18,16 @@ def index():
     if request.method == "POST":
         try:
             # Get data from form
+            gender = float(request.form["gender"])
+
             age = float(request.form["age"])
             income = float(request.form["income"])
             spending = float(request.form["spending"])
 
             # Scale the input
-            input_data = scaler.transform([[age, income, spending]])
+           
+            input_data = scaler.transform([[age, income, spending, gender]])
+
 
             # Predict the cluster
             cluster = model.predict(input_data)[0]
